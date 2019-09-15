@@ -44,11 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICrypter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TEACrypterBase.cs" />
-    <Compile Include="TEADecrypter.cs" />
-    <Compile Include="TEAEncrypter.cs" />
+    <Compile Include="TEACrypter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

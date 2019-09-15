@@ -17,10 +17,9 @@ namespace Tests
             rnd.NextBytes(block);
             rnd.NextBytes(key);
 
-            var encrypter = new TEAEncrypter(key);
-            var decrypter = new TEADecrypter(key);
-            var encrypt = encrypter.Encrypt(block);
-            var decrypt = decrypter.Decrypt(encrypt);
+            var crypter = new TEACrypter(key);
+            var encrypt = crypter.Encrypt(block);
+            var decrypt = crypter.Decrypt(encrypt);
 
             decrypt.Should().BeEquivalentTo(block, o => o.WithStrictOrdering());
         }
