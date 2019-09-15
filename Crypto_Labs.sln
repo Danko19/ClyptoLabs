@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto_Lab1", "Crypto_Lab1\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoCommon", "CryptoCommon\CryptoCommon.csproj", "{F65DA5B2-F38C-4856-949A-992CF326D81A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crypto_Lab2", "Crypto_Lab2\Crypto_Lab2.csproj", "{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{F65DA5B2-F38C-4856-949A-992CF326D81A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F65DA5B2-F38C-4856-949A-992CF326D81A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F65DA5B2-F38C-4856-949A-992CF326D81A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
