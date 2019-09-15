@@ -6,7 +6,7 @@ namespace Crypto_Lab2
     {
         static void Main(string[] args)
         {
-            var rnd = new Random();
+            var rnd = new Random(19);
 
             var block = new byte[8];
             var key = new byte[16];

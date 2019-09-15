@@ -31,8 +31,8 @@ namespace Crypto_Lab2
 
         private (uint left, uint right) DoDecryptRound(uint left, uint right, uint sum)
         {
-            (left, right) = DoRoundDec(left, right, sum, k2, k3);
-            (left, right) = DoRoundDec(left, right, sum, k0, k1);
+            (left, right) = (right - (((left << 4) + k2) ^ (left + sum) ^ ((left >> 5) + k3)), left);
+            (left, right) = (right - (((left << 4) + k0) ^ (left + sum) ^ ((left >> 5) + k1)), left);
             return (left, right);
         }
     }

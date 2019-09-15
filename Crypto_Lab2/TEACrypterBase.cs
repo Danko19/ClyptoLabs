@@ -21,25 +21,5 @@ namespace Crypto_Lab2
             k2 = BitConverter.ToUInt32(key, 8);
             k3 = BitConverter.ToUInt32(key, 12);
         }
-
-        protected static (uint left, uint right) DoRound(uint left, uint right, uint sum, uint firstKey, uint secondKey)
-        {
-            unchecked
-            {
-                var newRight = left + (((right << 4) + firstKey) ^ (right + sum) ^ ((right >> 5) + secondKey));
-                var newLeft = right;
-                return (newLeft, newRight);
-            }
-        }
-
-        protected static (uint left, uint right) DoRoundDec(uint left, uint right, uint sum, uint firstKey, uint secondKey)
-        {
-            unchecked
-            {
-                var newLeft = right - (((left << 4) + firstKey) ^ (left + sum) ^ ((left >> 5) + secondKey));
-                var newRight = left;
-                return (newLeft, newRight);
-            }
-        }
     }
 }

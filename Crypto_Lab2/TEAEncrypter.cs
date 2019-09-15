@@ -31,9 +31,12 @@ namespace Crypto_Lab2
 
         private (uint left, uint right) DoEncryptRound(uint left, uint right, uint sum)
         {
-            (left, right) = DoRound(left, right, sum, k0, k1);
-            (left, right) = DoRound(left, right, sum, k2, k3);
-            return (left, right);
+            unchecked
+            {
+                (left, right) = (right, left + (((right << 4) + k0) ^ (right + sum) ^ ((right >> 5) + k1)));
+                (left, right) = (right, left + (((right << 4) + k2) ^ (right + sum) ^ ((right >> 5) + k3)));
+                return (left, right);
+            }
         }
     }
 }
