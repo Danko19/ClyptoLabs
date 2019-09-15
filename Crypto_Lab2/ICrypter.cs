@@ -2,7 +2,6 @@
 {
     public interface ICrypter
     {
-        ICrypter Create(byte[] key);
         byte[] Encrypt(byte[] source);
         byte[] Decrypt(byte[] source);
         int BlockSize { get; }

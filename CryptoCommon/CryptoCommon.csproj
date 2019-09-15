@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumerableExtensions.cs" />
     <Compile Include="LazyFileReader.cs" />
     <Compile Include="LazyFileWriter.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.Batch.cs" />

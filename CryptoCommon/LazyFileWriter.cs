@@ -7,7 +7,7 @@ namespace CryptoCommon
 {
     public class LazyFileWriter
     {
-        private const int batchSize = 1024 * 1024;
+        private const int batchSize = 1024 * 4;
         private readonly string fileName;
 
         public LazyFileWriter(string fileName)

@@ -23,11 +23,6 @@ namespace Crypto_Lab2
             k3 = BitConverter.ToUInt32(key, 12);
         }
 
-        public ICrypter Create(byte[] key)
-        {
-            return new TEACrypter(key);
-        }
-
         public byte[] Encrypt(byte[] source)
         {
             if (source.Length != 8)
