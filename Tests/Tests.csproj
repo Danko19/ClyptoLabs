@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto_Lab2_Tests.cs" />
+    <Compile Include="Crypto_Lab3_Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\Crypto_Lab2\Crypto_Lab2.csproj">
       <Project>{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}</Project>
       <Name>Crypto_Lab2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Crypto_Lab3\Crypto_Lab3.csproj">
+      <Project>{9fe7afe0-45e8-4d55-ba56-5ad03c99b7fe}</Project>
+      <Name>Crypto_Lab3</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

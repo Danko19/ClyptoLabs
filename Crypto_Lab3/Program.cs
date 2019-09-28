@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
+using System.Runtime.ConstrainedExecution;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Crypto_Lab3
 {
@@ -10,6 +9,16 @@ namespace Crypto_Lab3
     {
         static void Main(string[] args)
         {
+            var key = File.ReadAllBytes("key");
+            var sBlock = new SBlock(key);
+
+            foreach (var k in sBlock.GetBytes())
+            {
+                var keyChar = Console.ReadKey(true).KeyChar;
+                var b = Convert.ToByte(keyChar);
+                var e = b ^ k;
+                Console.Write(Convert.ToChar(e));
+            }
         }
     }
 }
