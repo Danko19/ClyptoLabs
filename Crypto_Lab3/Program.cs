@@ -12,7 +12,14 @@ namespace Crypto_Lab3
     {
         static void Main(string[] args)
         {
-            var key = File.ReadAllBytes("key");
+            string keyString = null;
+            while (string.IsNullOrWhiteSpace(keyString))
+            {
+                Console.WriteLine("Enter key word:");
+                keyString = Console.ReadLine();
+            }
+
+            var key = Encoding.UTF8.GetBytes(keyString);
             var fileName = args.Single();
             var fileContent = new LazyFileReader(fileName);
             var prefix = fileContent.Take(2).ToArray();
@@ -20,7 +27,7 @@ namespace Crypto_Lab3
             if (prefix[0] == 0x42 && prefix[1] == 0x4D)
                 cryptAsBmp = IsCryptAsBmp();
 
-            IEnumerable<byte> result = null;
+            IEnumerable<byte> result;
             var rc4 = new RC4lAgorithm();
             if (cryptAsBmp)
             {
@@ -56,9 +63,9 @@ namespace Crypto_Lab3
             if (!string.IsNullOrWhiteSpace(extension))
                 fileName = fileName.Replace($"{extension}", "");
 
-            fileName = $"{fileName}_ crypted_{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
+            fileName = $"{fileName}_crypted_{DateTime.Now:yyyy-MM-dd-HH-mm-ss}";
 
-            if (!string.IsNullOrWhiteSpace(extension))
+            if (!string.IsNullOrEmpty(extension))
                 fileName = $"{fileName}{extension}";
 
             return fileName;
