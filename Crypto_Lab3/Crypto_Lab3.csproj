@@ -51,5 +51,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoCommon\CryptoCommon.csproj">
+      <Project>{f65da5b2-f38c-4856-949a-992cf326d81a}</Project>
+      <Name>CryptoCommon</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
