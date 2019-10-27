@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Crypto_Lab2
+namespace CryptoCommon
 {
     public interface IPaddingStandard
     {

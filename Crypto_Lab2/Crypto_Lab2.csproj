@@ -44,9 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlockWorker.cs" />
     <Compile Include="ICrypter.cs" />
-    <Compile Include="IPaddingStandard.cs" />
     <Compile Include="Iso10126PaddingStandard.cs" />
     <Compile Include="PCBCCryptingStrategy.cs" />
     <Compile Include="Program.cs" />

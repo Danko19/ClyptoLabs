@@ -10,6 +10,7 @@ namespace Crypto_Lab4
 	{
 		static void Main(string[] args)
 		{
+			new SHA512().GetHash(new byte[] { 1, 3, 4 });
 		}
 	}
 }

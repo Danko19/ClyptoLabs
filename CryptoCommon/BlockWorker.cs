@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using MoreLinq;
 
-namespace Crypto_Lab2
+namespace CryptoCommon
 {
     public class BlockWorker<TPaddingStandard>
         where TPaddingStandard : IPaddingStandard, new()

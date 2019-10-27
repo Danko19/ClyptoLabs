@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlockWorker.cs" />
     <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="IPaddingStandard.cs" />
     <Compile Include="LazyFileReader.cs" />
     <Compile Include="LazyFileWriter.cs" />
     <Compile Include="MoreLinq\MoreEnumerable.Batch.cs" />

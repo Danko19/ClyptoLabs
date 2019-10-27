@@ -47,9 +47,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SHA512.cs" />
+    <Compile Include="SHA512Constannts.cs" />
+    <Compile Include="SHA512PaddingStandard.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoCommon\CryptoCommon.csproj">
+      <Project>{F65DA5B2-F38C-4856-949A-992CF326D81A}</Project>
+      <Name>CryptoCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

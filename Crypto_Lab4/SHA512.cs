@@ -6,11 +6,20 @@ using System.Threading.Tasks;
 
 namespace Crypto_Lab4
 {
-	public static class SHA512
+	public class SHA512
 	{
-		public static byte[] GetHash(IEnumerable<byte> content)
+		private readonly EratosthenesPrimeNumberProvider primeNumberProvider = new EratosthenesPrimeNumberProvider();
+
+		public byte[] GetHash(IEnumerable<byte> content)
 		{
-			return null;
+			var h = InitializeVector();
+		}
+
+		private static ulong[] InitializeVector()
+		{
+			var h = new ulong[8];
+			SHA512Constannts.H.CopyTo(h, 0);
+			return h;
 		}
 	}
 }
