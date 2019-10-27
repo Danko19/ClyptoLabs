@@ -7,7 +7,7 @@ namespace Crypto_Lab2
 {
     public class Iso10126PaddingStandard : IPaddingStandard
     {
-        public IEnumerable<IEnumerable<byte>> GetAlignedBlocks(IEnumerable<byte> lastBlock, int blockSize, int previousBlocksCount)
+        public IEnumerable<IEnumerable<byte>> GetAlignedBlocks(IEnumerable<byte> lastBlock, int blockSize, long previousBlocksCount)
         {
             var random = new Random();
             var lastBlockArray = lastBlock.ToArray();
