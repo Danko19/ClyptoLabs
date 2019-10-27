@@ -19,9 +19,9 @@ namespace Crypto_Lab2
         {
             var crypter = CreateCrypterWithChecks(key, initializingVector);
 
-            var blockWorker = new BlockWorker<TPaddingStandart>(crypter.BlockSize);
+            var blockWorker = new BlockWorker(crypter.BlockSize);
 
-            foreach (var block in blockWorker.GetBlocks(source))
+            foreach (var block in blockWorker.GetBlocks(source, new TPaddingStandart()))
             {
                 var blockArray = block.ToArray();
 
@@ -41,8 +41,8 @@ namespace Crypto_Lab2
 
             var blocks = DecryptInternal(crypter, source, initializingVector);
 
-            var blockWorker = new BlockWorker<TPaddingStandart>(crypter.BlockSize);
-            return blockWorker.GetData(blocks);
+            var blockWorker = new BlockWorker(crypter.BlockSize);
+            return blockWorker.GetData(blocks, new TPaddingStandart());
         }
 
         private static IEnumerable<IEnumerable<byte>> DecryptInternal(ICrypter crypter, IEnumerable<byte> source, byte[] initializingVector)

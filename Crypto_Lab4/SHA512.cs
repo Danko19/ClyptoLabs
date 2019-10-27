@@ -13,6 +13,7 @@ namespace Crypto_Lab4
 		public byte[] GetHash(IEnumerable<byte> content)
 		{
 			var h = InitializeVector();
+			return null;
 		}
 
 		private static ulong[] InitializeVector()

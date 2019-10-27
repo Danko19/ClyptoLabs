@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CryptoCommon\CryptoCommon.csproj">
+      <Project>{f65da5b2-f38c-4856-949a-992cf326d81a}</Project>
+      <Name>CryptoCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Crypto_Lab2\Crypto_Lab2.csproj">
       <Project>{E81F81F5-50F7-4BF7-B3D7-5D6DBB65F5A3}</Project>
       <Name>Crypto_Lab2</Name>
