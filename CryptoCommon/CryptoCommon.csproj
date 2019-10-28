@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlockWorker.cs" />
-    <Compile Include="EnumerableExtensions.cs" />
+    <Compile Include="SetOperationsExtensions.cs" />
     <Compile Include="IPaddingStandard.cs" />
     <Compile Include="LazyFileReader.cs" />
     <Compile Include="LazyFileWriter.cs" />
