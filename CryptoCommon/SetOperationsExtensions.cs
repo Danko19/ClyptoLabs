@@ -22,7 +22,7 @@ namespace CryptoCommon
 		public static ulong Rotr(this ulong number, int shifts)
 		{
 			var copy = number << 64 - shifts % 64;
-			return copy + number >> shifts;
+			return copy + (number >> shifts);
 		}
 
 		public static ulong Xor(this ulong num1, ulong num2)

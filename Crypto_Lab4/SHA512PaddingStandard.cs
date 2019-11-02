@@ -19,7 +19,7 @@ namespace Crypto_Lab4
 			var valuableDataLength = previousBlocksCount * blockSize + lastBlockArray.Length;
 
 			return lastBlockArray
-				.Concat(new byte[] { 255 })
+				.Concat(new byte[] { 128 })
 				.Concat(Enumerable.Repeat<byte>(0, k))
 				.Concat(BitConverter.GetBytes((ulong)valuableDataLength * 8).Reverse())
 				.Batch(blockSize);
