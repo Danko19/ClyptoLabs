@@ -27,22 +27,27 @@ namespace Crypto_Lab4
 
             var (s, d) = Decompose(number);
             var numberLength = number.ToByteArray().Length;
-            var millerRabinTestRounds = 5;
-            var rawPrimeWitness = new byte[numberLength];
-            for(var round = 0; round < millerRabinTestRounds; round++)
+            const int threadsCount = 4;
+            var iterations = numberLength / threadsCount;
+            var threads = Enumerable.Range(0, 4).ToArray();
+            for (var i = 0; i < iterations; i++)
             {
-                BigInteger primeWitness;
-                do
-                {
-                    RandomNumberGenerator.GetBytes(rawPrimeWitness);
-                    primeWitness = new BigInteger(rawPrimeWitness);
-                }
-                while (primeWitness < 2 || primeWitness > number - 2);
+                var isCompound = threads.AsParallel()
+                    .WithDegreeOfParallelism(4)
+                    .Select(_ => MillerRabinCheck())
+                    .Any(res => !res);
 
+                if (isCompound)
+                    return false;
+            }
+
+            bool MillerRabinCheck()
+            {
+                var primeWitness = GetRandomNumber(2, number - 2, numberLength);
                 var x = BigInteger.ModPow(primeWitness, d, number);
 
                 if (x == 1 || x == number - 1)
-                    continue;
+                    return true;
 
                 for (var i = 1; i < s; i++)
                 {
@@ -53,11 +58,23 @@ namespace Crypto_Lab4
                         break;
                 }
 
-                if (x != number - 1)
-                    return false;
+                return x == number - 1;
             }
 
             return true;
+        }
+
+        private static BigInteger GetRandomNumber(BigInteger from, BigInteger to, int bytesLength)
+        {
+            var data = new byte[bytesLength];
+            BigInteger primeWitness;
+            do
+            {
+                RandomNumberGenerator.GetBytes(data);
+                primeWitness = new BigInteger(data);
+            } while (primeWitness < from || primeWitness > to);
+
+            return primeWitness;
         }
 
         private static (BigInteger s, BigInteger d) Decompose(BigInteger primeCandidate)
