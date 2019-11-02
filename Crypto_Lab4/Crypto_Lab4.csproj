@@ -54,8 +54,11 @@
     <Compile Include="EratosthenesPrimeNumberProvider.cs" />
     <Compile Include="ExtendedBitConverter.cs" />
     <Compile Include="BigIntegerExtension.cs" />
+    <Compile Include="ExtendedEuclideanAlgorithm.cs" />
+    <Compile Include="IRSAKey.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RSA.cs" />
     <Compile Include="RSAKeyGenerator.cs" />
     <Compile Include="SHA512.cs" />
     <Compile Include="SHA512Constannts.cs" />

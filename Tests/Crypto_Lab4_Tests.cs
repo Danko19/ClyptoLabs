@@ -12,8 +12,8 @@ namespace Tests
     [Parallelizable(ParallelScope.All)]
     public class Crypto_Lab4_Tests
     {
-        private readonly HashSet<int> primeNumbersFrom2To100000 =
-            new EratosthenesPrimeNumberProvider().GetPrimeNumbersFrom2To(100000).ToHashSet();
+        private readonly Lazy<HashSet<int>> primeNumbersFrom2To100000 =
+            new Lazy<HashSet<int>>(() => new EratosthenesPrimeNumberProvider().GetPrimeNumbersFrom2To(100000).ToHashSet());
 
         [Test]
         public void BigIntegerExtensionTest()
@@ -21,7 +21,7 @@ namespace Tests
             foreach (var number in Enumerable.Range(2, 99999))
             {
                 var actual = new BigInteger(number).IsPrime();
-                var expected = primeNumbersFrom2To100000.Contains(number);
+                var expected = primeNumbersFrom2To100000.Value.Contains(number);
                 actual.Should().Be(expected, $"Number {number} is prime actual: {actual}, expected: {expected}");
             }
         }
@@ -32,7 +32,7 @@ namespace Tests
             for (var i = 0; i < 100; i++)
             {
                 var randomPrimeNumber = BigPrimeNumberGenerator.GetRandomPrimeNumber(16);
-                primeNumbersFrom2To100000.Contains((int) randomPrimeNumber).Should()
+                primeNumbersFrom2To100000.Value.Contains((int) randomPrimeNumber).Should()
                     .BeTrue($"{(int) randomPrimeNumber} is unknown prime number");
             }
         }
@@ -84,6 +84,41 @@ namespace Tests
                     .Concat(new byte[] {8 * 8})
                     .ToArray(),
                 options => options.WithStrictOrdering());
+        }
+
+        [Test]
+        [TestCase(1234, 54, 2, -7, 160)]
+        [TestCase(54, 1234, 2, 160, -7)]
+        [TestCase(1234, 1234, 1234, 0, 1)]
+        [TestCase(9167368, 3, 1, 1, -3055789)]
+        public void ExtendedEuclideanAlgorithmTest(int a, int b, int expectedGcd, int expectedX, int expectedY)
+        {
+            var (gcd, x, y) = ExtendedEuclideanAlgorithm.GetGcd(new BigInteger(a), new BigInteger(b));
+            gcd.Should().Be(expectedGcd);
+            x.Should().Be(expectedX);
+            y.Should().Be(expectedY);
+        }
+
+        [Test]
+        public void RSASimpleTest()
+        {
+            var data = new BigInteger(123456).ToByteArray();
+            var (publicKey, privateKey) = RSAKeyGenerator.Generate();
+            var sign = RSA.Crypt(data, privateKey);
+            var decryptedData = RSA.Crypt(sign, publicKey);
+            data.Should().BeEquivalentTo(decryptedData, options => options.WithStrictOrdering());
+        }
+
+        [Test]
+        public void RSAFunctionalTest()
+        {
+            var data = new byte[123456];
+            new Random().NextBytes(data);
+            var hash = SHA512.GetHash(data);
+            var (publicKey, privateKey) = RSAKeyGenerator.Generate();
+            var sign = RSA.Crypt(hash, privateKey);
+            var decryptedHash = RSA.Crypt(sign, publicKey);
+            hash.Should().BeEquivalentTo(decryptedHash, options => options.WithStrictOrdering());
         }
     }
 }

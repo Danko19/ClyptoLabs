@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using Crypto_Lab3;
 using FluentAssertions;
 using NUnit.Framework;
 
 namespace Tests
 {
+    [Parallelizable(ParallelScope.All)]
     public class Crypto_Lab3_Tests
     {
         private readonly Random random = new Random();
